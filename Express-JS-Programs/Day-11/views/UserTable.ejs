@@ -1,0 +1,109 @@
+
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        /* Table styling */
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+        
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+        
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+        
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+        
+        .styled-table tbody tr:hover {
+            background-color: #e0f7fa;
+            color: #009879;
+            font-weight: bold;
+        }
+        
+        /* Caption styling */
+        .styled-table caption {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <%- include("Navbar")%>
+    <table class="styled-table">
+        <caption>Student Information</caption>
+        <thead>
+            <tr>
+                  <th>SR>NO</th>
+                 
+                <th>Name</th>
+                
+                <th>degree</th>
+                <th>Domain</th>
+
+                <th>Action</th>
+               
+            </tr>
+        </thead>
+
+        <% users.map((user,index)=>{%>
+        <tbody>
+            <tr>
+                 <td> <%= index +1 %></td>
+                <td> <%= user.name %></td>  
+                 <td> <%= user.degree%></td>
+                 <td> <%= user.domain %></td>
+             
+                 <td> <a href="/edit/<%=user._id%>">Edit</a> <br>
+                <form  action="/delete/<%=user._id %>" method="post"
+                    onsubmit="return  confirm('are you sure want to delte ')">
+                    <button type="submit">Delete</button>
+                    
+                </form>  
+                
+
+                  
+                    
+                 
+                </td>
+            </tr>
+          <% })%>
+        </tbody>
+    </table>
+</body>

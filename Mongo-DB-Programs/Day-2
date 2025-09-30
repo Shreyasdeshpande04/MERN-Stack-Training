@@ -1,0 +1,215 @@
+## 📚 Data Types in MongoDB
+
+### 1️⃣ String
+
+// Used to store text values
+
+**Syntax:**
+"value"
+
+**Example:**
+{name: "Rahul"}
+// Stores a text value "Rahul" in the field `name`.
+
+---
+
+### 2️⃣ Number (Int / Double)
+
+// Used to store numeric values (integer or floating-point)
+
+**Syntax:**
+NumberInt(value) or plain number
+
+**Example:**
+{age: 22, price: 99.99}
+// Stores numeric values: 22 as integer, 99.99 as double.
+
+---
+
+### 3️⃣ Boolean
+
+// Used to store true/false values
+
+**Syntax:**
+true / false
+
+**Example:**
+{isActive: true}
+// Stores a boolean value true in the field `isActive`.
+
+---
+
+### 4️⃣ Date
+
+// Used to store date and time values
+
+**Syntax:**
+new Date("YYYY-MM-DD")
+
+**Example:**
+{createdAt: new Date("2025-08-25")}
+// Stores a date object with value 25th Aug 2025.
+
+---
+
+### 5️⃣ Array
+
+// Used to store multiple values in a single field
+
+**Syntax:**
+\[value1, value2, ...]
+
+**Example:**
+{hobbies: \["reading", "coding", "traveling"]}
+// Stores multiple values as an array in the field `hobbies`.
+
+---
+
+### 6️⃣ Object (Embedded Document)
+
+// Used to store nested documents inside another document
+
+**Syntax:**
+{ key: value, key2: value }
+
+**Example:**
+{address: {city: "Mumbai", pincode: 400001}}
+// Stores an embedded document with `city` and `pincode` fields.
+
+---
+
+## ⚙️ MongoDB Operators
+
+### 🟢 A. Comparison Operators
+
+#### 1️⃣ \$eq
+
+// Matches values equal to a specified value
+
+**Syntax:**
+db.collection.find({ field: { \$eq: value } })
+
+**Example:**
+db.students.find({ age: { \$eq: 22 } })
+// Finds all students whose age is exactly 22.
+
+---
+
+#### 2️⃣ \$ne
+
+// Matches values not equal to a specified value
+
+**Syntax:**
+db.collection.find({ field: { \$ne: value } })
+
+**Example:**
+db.students.find({ age: { \$ne: 18 } })
+// Finds all students whose age is not equal to 18.
+
+---
+
+#### 3️⃣ \$gt
+
+// Matches values greater than a specified value
+
+**Syntax:**
+db.collection.find({ field: { \$gt: value } })
+
+**Example:**
+db.students.find({ age: { \$gt: 20 } })
+// Finds all students whose age is greater than 20.
+
+---
+
+#### 4️⃣ \$lt
+
+// Matches values less than a specified value
+
+**Syntax:**
+db.collection.find({ field: { \$lt: value } })
+
+**Example:**
+db.students.find({ age: { \$lt: 25 } })
+// Finds all students whose age is less than 25.
+
+---
+
+#### 5️⃣ \$gte
+
+// Matches values greater than or equal to a specified value
+
+**Syntax:**
+db.collection.find({ field: { \$gte: value } })
+
+**Example:**
+db.students.find({ age: { \$gte: 21 } })
+// Finds all students whose age is greater than or equal to 21.
+
+---
+
+#### 6️⃣ \$lte
+
+// Matches values less than or equal to a specified value
+
+**Syntax:**
+db.collection.find({ field: { \$lte: value } })
+
+**Example:**
+db.students.find({ age: { \$lte: 23 } })
+// Finds all students whose age is less than or equal to 23.
+
+---
+
+### 🔶 B. Logical Operators
+
+#### 1️⃣ \$and
+
+// Joins query clauses with a logical AND
+
+**Syntax:**
+db.collection.find({ \$and: \[ { field1: value1 }, { field2: value2 } ] })
+
+**Example:**
+db.students.find({ \$and: \[ { age: { \$gte: 20 } }, { isActive: true } ] })
+// Finds all students aged 20 or older AND who are active.
+
+---
+
+#### 2️⃣ \$or
+
+// Joins query clauses with a logical OR
+
+**Syntax:**
+db.collection.find({ \$or: \[ { field1: value1 }, { field2: value2 } ] })
+
+**Example:**
+db.students.find({ \$or: \[ { age: 18 }, { age: 25 } ] })
+// Finds all students whose age is either 18 OR 25.
+
+---
+
+#### 3️⃣ \$nor
+
+// Joins query clauses with a logical NOR (opposite of OR)
+
+**Syntax:**
+db.collection.find({ \$nor: \[ { field1: value1 }, { field2: value2 } ] })
+
+**Example:**
+db.students.find({ \$nor: \[ { age: 18 }, { isActive: false } ] })
+// Finds all students who are NOT 18 years old AND NOT inactive.
+
+---
+
+#### 4️⃣ \$not
+
+// Inverts the effect of a query expression
+
+**Syntax:**
+db.collection.find({ field: { \$not: { condition } } })
+
+**Example:**
+db.students.find({ age: { \$not: { \$gt: 25 } } })
+// Finds all students whose age is NOT greater than 25.
+
+---

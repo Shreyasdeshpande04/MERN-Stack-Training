@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mumbai City Tourist Spots</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="navscript.js"></script>
+  <script src="footer.js"></script>
+  <style>
+    .navbar-custom {
+      background-color: #003366;
+    }
+    .text-yellow {
+      color: yellow !important;
+    }
+    .text-orange {
+      color: orange !important;
+    }
+    #centerSpotContainer {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100" style="background-color:lightgray">
+  <div id="navbar"></div><br><br>
+  <main class="flex-grow-1">
+    <div class="container mt-4">
+      <h2 class="text-center mb-4" id="pageTitle">Explore Mumbai's Top Tourist Spots</h2>
+      <div id="spotCarousel" class="carousel slide" data-bs-ride="false">
+        <div class="carousel-inner" id="carouselItems"></div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#spotCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#spotCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <div id="footer"></div><br><br>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const querySpot = urlParams.get("search");
+
+    const spots = [
+      { name: "GATEWAY OF INDIA", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvK-fnQLsSUmjYNae5UTGAqB_sx8D2MUW-GQ&s", info: "The Gateway of India is Mumbai’s most regal monument, facing the Arabian Sea. Built in 1924, it marks the spot where British royals once entered the city. Today, it's a buzzing spot with photographers, ferries, and tourists. The Indo-Saracenic architecture stands tall as a symbol of colonial legacy and Indian pride. Hop on a ferry to Elephanta Caves right from here. It’s not just a monument—it’s Mumbai’s welcome mat to the world. Every trip to the city starts with a snap here!" },
+      { name: "MARINE DRIVE", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqp-OTQh4oPsH3U5ZVsh2ImUl0KlHUXEJaLw&s", info: "Known as the Queen’s Necklace, Marine Drive is Mumbai’s most iconic seaside promenade. Stretching along the Arabian Sea, it’s the perfect place for an evening walk under the city lights. The sound of crashing waves and cool sea breeze bring instant calm. Sunrise jogs and sunset selfies make this a favorite for locals and tourists alike. The curved stretch offers a panoramic skyline that glows at night. Come here to escape the city rush without leaving the city. Marine Drive is where Mumbai pauses to breathe." },
+      { name: "ELEPHANTA CAVES", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr6sYptmj_moUCOYTHwV-r8SXjyC6mFZ_YYA&s", info: "Step into a world of ancient mystery at the Elephanta Caves, nestled on a serene island just a ferry ride from Mumbai.These UNESCO World Heritage caves are home to breathtaking rock-cut sculptures dedicated to Lord Shiva.Marvel at the majestic Trimurti, a colossal three-headed Shiva carved from solid stone.The island's peaceful atmosphere makes it a perfect escape from the city's hustlE.Wander through cool, dimly lit chambers echoing with history and devotion.Enjoy scenic sea views and a charming toy train ride upon arrival at the island." }
+    ];
+
+    const carouselInner = document.getElementById("carouselItems");
+
+    function renderCards(filteredSpots, isSearch) {
+      const row = document.createElement("div");
+      row.className = "row justify-content-center";
+
+      filteredSpots.forEach((spot) => {
+        const col = document.createElement("div");
+        col.className = isSearch ? "col-md-6 mb-3" : "col-md-4 mb-3";
+        col.innerHTML = `
+          <div class="card h-100">
+            <img src="${spot.img}" class="card-img-top" alt="${spot.name}" />
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <h5 class="card-title">${spot.name}</h5>
+                <p class="card-text">${spot.info}</p>
+              </div>
+              <a href="booking.html?destination=${encodeURIComponent(spot.name)}" class="btn btn-primary mt-2">Book</a>
+            </div>
+          </div>`;
+        row.appendChild(col);
+      });
+
+      const item = document.createElement("div");
+      item.className = "carousel-item active";
+      if (isSearch) {
+        item.innerHTML = `<div id="centerSpotContainer">${row.innerHTML}</div>`;
+        document.getElementById("pageTitle").style.display = "none";
+      } else {
+        item.appendChild(row);
+      }
+      carouselInner.appendChild(item);
+    }
+
+    const filtered = querySpot ? spots.filter(s => s.name.toUpperCase() === querySpot.toUpperCase()) : spots;
+    renderCards(filtered, !!querySpot);
+  </script>
+</body>
+</html>

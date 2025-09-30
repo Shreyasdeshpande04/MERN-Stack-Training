@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wildlife Spots in Mumbai</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="navscript.js"></script>
+  <script src="footer.js"></script>
+  <style>
+    .navbar-custom {
+      background-color: #003366;
+    }
+    .text-yellow {
+      color: yellow !important;
+    }
+    .text-orange {
+      color: orange !important;
+    }
+  </style>
+</head>
+<body style="background-color: lightgreen;">
+  <div id="navbar"></div><br><br>
+  
+  <div class="container mt-4">
+    <h2 class="text-center mb-4" id="mainTitle">Explore Mumbai's Wildlife Spots</h2>
+    
+    <div id="spotCarousel" class="carousel slide" data-bs-ride="false">
+      <div class="carousel-inner" id="carouselItems"></div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#spotCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#spotCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const querySpot = urlParams.get("search");
+
+    const spots = [
+      {
+        name: "SANJAY GANDHI NATIONAL PARK",
+        img: "https://s7ap1.scene7.com/is/image/incredibleindia/1-sanjay-gandhi-national-park-mumbai-maharashtra-attr-hero?qlt=82&ts=1727355346883",
+        info: "One of the most visited national parks in Asia, this green haven lies right in Mumbai. Home to leopards, deer, and over 270 species of birds, it's a paradise for nature lovers. You can enjoy a toy train ride, explore the Kanheri Caves, or trek through forest trails. The park breathes fresh air into the city’s chaos. Don’t miss the early morning safaris. With scenic beauty and rich biodiversity, SGNP is Mumbai’s proud green lung."
+      },
+      {
+        name: "TUNGARESHWAR WILDLIFE SANCTUARY",
+        img: "https://upload.wikimedia.org/wikipedia/commons/7/75/Tungareshwar_Wildlife_Sanctuary_%2828343357103%29.jpg",
+        info: "Hidden between Virar and Vasai lies this dense forest sanctuary that offers the perfect weekend escape. Popular for trekking, the sanctuary is lush with waterfalls, streams, and sacred temples. Keep an eye out for langurs, reptiles, and butterflies along the trail. It’s lesser-known, peaceful, and raw—perfect for adventure-seeking nature buffs. Early morning mist gives it a mystical charm. A true offbeat gem near Mumbai."
+      },
+      {
+        name: "AAREY FOREST",
+        img: "https://sabrangindia.in//sites/default/files/pictures/Aarey_0.jpg",
+        info: "Known as the green heart of Mumbai, Aarey Forest is a serene stretch of natural beauty amidst the urban sprawl. With its grasslands, streams, and tall trees, it offers scenic picnic spots and nature walks. Rich in flora and fauna, it shelters many species of birds and insects. It’s also home to tribal communities and dairy farms. Aarey isn’t just a forest—it’s a vital piece of Mumbai’s ecological identity. Ideal for early walks and quiet escapes."
+      }
+    ];
+
+    const carouselInner = document.getElementById("carouselItems");
+
+    function renderCards(filteredSpots) {
+      const chunkSize = 3;
+      for (let i = 0; i < filteredSpots.length; i += chunkSize) {
+        const chunk = filteredSpots.slice(i, i + chunkSize);
+        const item = document.createElement("div");
+        item.className = `carousel-item${i === 0 ? ' active' : ''}`;
+
+        const row = document.createElement("div");
+        row.className = "row justify-content-center";
+
+        chunk.forEach((spot) => {
+          const col = document.createElement("div");
+          col.className = "col-md-4 mb-3";
+          col.innerHTML = `
+            <div class="card h-100">
+              <img src="${spot.img}" class="card-img-top" alt="${spot.name}" />
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <h5 class="card-title">${spot.name}</h5>
+                  <p class="card-text">${spot.info}</p>
+                </div>
+                <a href="booking.html?destination=${encodeURIComponent(spot.name)}" class="btn btn-primary mt-2">Book</a>
+              </div>
+            </div>`;
+          row.appendChild(col);
+        });
+
+        item.appendChild(row);
+        carouselInner.appendChild(item);
+      }
+    }
+
+    const filtered = querySpot
+      ? spots.filter(s => s.name.toUpperCase() === querySpot.toUpperCase())
+      : spots;
+
+    if (querySpot) {
+      document.getElementById("mainTitle").style.display = "none";
+    }
+
+    renderCards(filtered);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <div id="footer"></div><br><br>
+</body>
+</html>

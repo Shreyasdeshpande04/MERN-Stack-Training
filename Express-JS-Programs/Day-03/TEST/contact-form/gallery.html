@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maharashtra Tourism Gallery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="gallery.css">
+<script src="navscript.js"></script>
+<script src="footer.js"></script>
+</head>
+<body style="background-color:lightpink"></body>
+  <div id="navbar"></div><br><br>
+
+
+  <!-- Tabs -->
+  <div class="container">
+    <div class="tab-buttons">
+    <button class="tab-btn active" onclick="changeTab('GATEWAY_OF_INDIA', this)">GATEWAY OF INDIA</button>
+<button class="tab-btn" onclick="changeTab('MARINE_DRIVE', this)">MARINE DRIVE</button>
+<button class="tab-btn" onclick="changeTab('ELEPHANTA_CAVES', this)">ELEPHANTA CAVES</button>
+
+
+<button class="tab-btn" onclick="changeTab('SIDDHIVINAYAK_TEMPLE', this)">SIDDHIVINAYAK TEMPLE</button>
+<button class="tab-btn" onclick="changeTab('MUMBADEVI_TEMPLE', this)">MUMBADEVI TEMPLE</button>
+</div>
+  <div class="tab-buttons">
+<button class="tab-btn" onclick="changeTab('ISKCON_TEMPLE', this)">ISKCON TEMPLE</button>
+
+
+<button class="tab-btn" onclick="changeTab('SANJAY_GANDHI_NATIONAL_PARK', this)">SANJAY GANDHI NATIONAL PARK</button>
+<button class="tab-btn" onclick="changeTab('AAREY_FOREST', this)">AAREY FOREST</button>
+<button class="tab-btn" onclick="changeTab('TUNGARESHWAR_WILDLIFE_SANCTUARY', this)">TUNGARESHWAR WILDLIFE SANCTUARY</button>
+  
+    </div>
+
+    <!-- Carousel Area -->
+    <div class="carousel-container">
+      <div class="fixed-img-box">
+        <img id="carousel-image" src="images/adv1.jpg" alt="Image" />
+      </div>
+      <div class="image-caption" id="carousel-caption"></div>
+      <div class="carousel-nav">
+        <button onclick="prevImage()">&#8592; Prev</button>
+        <button onclick="nextImage()">Next &#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS -->
+  <script>
+    const images = {
+   GATEWAY_OF_INDIA: [
+        { src: 'https://s7ap1.scene7.com/is/image/incredibleindia/gateway-of-india-mumbai-maharashtra-2-attr-hero?qlt=82&ts=1727355556744'},
+        { src: 'https://images.saatchiart.com/saatchi/1872512/art/11504639/10566893-SQDCMNBO-7.jpg' },
+        { src: 'https://assets.simplotel.com/simplotel/image/upload/x_0,y_1208,w_3492,h_1968,r_0,c_crop,q_80,fl_progressive/w_500,f_auto,c_fit/theory9---premium-service-apts/mumbai_gateway_of_india'}
+      ],
+      MARINE_DRIVE: [
+        { src: 'https://images.wanderon.in/blogs/new/2024/04/marine-drive-2.jpg' },
+        { src: 'https://www.tripsavvy.com/thmb/soWUDapWGtmRQbvvY5OFMdd8Ezs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1008831236-5c65d6bf4cedfd00014aa310.jpg'},
+          { src: 'https://www.piramalaranya.com/wp-content/themes/aranya/assets/images/marine-drive/banner-img.png'}
+      ],
+      ELEPHANTA_CAVES: [
+           { src: 'https://i.pinimg.com/736x/af/de/02/afde025e82245955f34b282d871a1a1f.jpg' },
+        { src: 'https://magicalmumbaitours.com/wp-content/uploads/2024/10/qj62nh68fativk30jny3i6osrzgw_1524229348_Elephanta_caves.webp'},
+          { src: 'https://www.holidify.com/images/cmsuploads/compressed/shutterstock_694433434_20191213110339_20191213110412.png'}
+      ],
+      SIDDHIVINAYAK_TEMPLE: [
+            { src: 'https://traveleva.gumlet.io/activities/1950/1950_plating-devotee-around-delhi-weighing-donated-gold_2f6fc288-3c2a-11ea-bfbd-f812f33ac46f.jpg?w=1244&h=312' },
+      { src: 'https://www.mumbaimetrotimes.com/wp-content/uploads/2023/08/imgonline-com-ua-dexifsfvbfnspyehh-1-64df080fcc444-edited.webp'},
+      { src: 'https://travelteamindia.com/images/28-SIDDHIVINAYAK.png'}
+              
+    ],
+      MUMBADEVI_TEMPLE: [
+             { src: 'https://shridharam.com/wp-content/uploads/2024/01/mumbadevitemple.jpg' },
+        { src: 'https://sannidhi.net/wp-content/uploads/2022/12/mumbadevi2.png'},
+          { src: 'https://thetempleguru.com/wp-content/uploads/2024/03/mumba-devi-temple-mumbai.jpg'}
+         ],
+         ISKCON_TEMPLE: [
+             { src: 'https://s7ap1.scene7.com/is/image/incredibleindia/isckon-temple-mumbai-maharashtra-1-attr-hero?qlt=82&ts=1727355355786' },
+        { src: 'https://content3.jdmagicbox.com/v2/comp/mumbai/05/022p7702605/catalogue/hare-rama-hare-krishna-temple-juhu-mumbai-temples-dkibo8zhab.jpg'},
+          { src: 'https://centers.iskcondesiretree.com/wp-content/uploads/2011/06/Iskcon-Mumbai-Sri-Sri-Radha-Rasabihari.jpg'}
+        ],
+         SANJAY_GANDHI_NATIONAL_PARK: [
+             { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Entrance_of_Sanjay_Gandhi_National_Park.JPG/330px-Entrance_of_Sanjay_Gandhi_National_Park.JPG' },
+        { src: 'https://sgnp.maharashtra.gov.in/Images/explore/minitrain.png'},
+          { src: 'https://images.mid-day.com/images/images/2024/mar/lion-sanpa_d.jpg'}
+        ],
+         AAREY_FOREST: [
+              { src: 'https://www.mumbailive.com/images/media/images/images_1571639257863_aarey_forest.jpg?bg=5c5f38&canvas=0.25&crop=1164%2C558%2C0%2Cnull&fit=fill&fitToScale=w%2C1368%2C768&fm=webp&h=768&height=558&w=1368&width=1164' },
+        { src: 'https://imgk.timesnownews.com/story/aarey_forest.jpg'},
+          { src: 'https://images.squarespace-cdn.com/content/v1/5ee9c1b2f0c31534f55f0570/1592396510923-XGW3JT0WV57ZT2PUUA46/Mumbai-Aarey_Rajesh-Sanap-copy_gra8wi.jpg'}
+        ],
+         TUNGARESHWAR_WILDLIFE_SANCTUARY: [
+               { src: 'https://sceneloc8.com/wp-content/uploads/2024/03/4-80.png' },
+        { src: 'https://media.assettype.com/deccanherald%2Fimport%2Fsites%2Fdh%2Ffiles%2Farticle_images%2F2020%2F04%2F25%2Ffile76lm3lcpeug1evjzmbu6-1565451211.jpg?w=undefined&auto=format%2Ccompress&fit=max'},
+          { src: 'https://static.wixstatic.com/media/cab5da_1ec7e40046a94d55804d09c3b235c973~mv2.jpg/v1/fill/w_640,h_480,al_c/cab5da_1ec7e40046a94d55804d09c3b235c973~mv2.jpg'}
+        ]
+    };
+
+    let currentTab = 'GATEWAY_OF_INDIA';
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      const img = document.getElementById('carousel-image');
+      const cap = document.getElementById('carousel-caption');
+      const currentImage = images[currentTab][currentIndex];
+      img.src = currentImage.src;
+      cap.textContent = currentImage.caption;
+    }
+
+    function changeTab(tab, btn) {
+      currentTab = tab;
+      currentIndex = 0;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateCarousel();
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images[currentTab].length;
+      updateCarousel();
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images[currentTab].length) % images[currentTab].length;
+      updateCarousel();
+    }
+
+    // Initialize
+    updateCarousel();
+  </script>
+
+
+    <div id="footer"></div><br><br>
+</body>
+</html>

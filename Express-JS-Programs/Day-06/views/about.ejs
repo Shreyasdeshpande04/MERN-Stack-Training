@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Student Portal</title>
+  <style>
+    body {
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+
+    p {
+      color: #444;
+      line-height: 1.6;
+    }
+
+    ul {
+      margin-top: 10px;
+    }
+
+    .quote {
+      margin: 25px 0;
+      padding: 15px 20px;
+      background-color: #e9f7ef;
+      border-left: 4px solid #2ecc71;
+      font-style: italic;
+      color: #2e7d32;
+    }
+
+    .team-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .team-table th, .team-table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .team-table th {
+      background-color: #f2f2f2;
+    }
+
+    address {
+      background-color: #fdfdfd;
+      padding: 15px;
+      margin-top: 30px;
+      border-left: 5px solid #2980b9;
+    }
+
+    figure {
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    figure img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    figcaption {
+      margin-top: 8px;
+      color: #666;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <%- include('header') %>
+  <div class="container">
+    <header>
+      <h1>About Our Student Portal</h1>
+      <p>Welcome to our student platform — a hub created by students, for students. Our mission is to foster collaboration, share resources, and simplify academic life.</p>
+    </header>
+    <section>
+      <h2>Meet the Core Team</h2>
+      <table class="team-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Specialization</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Shreyas Deshpande</td>
+            <td>Frontend Developer</td>
+            <td>UI Design, HTML/CSS/JS</td>
+          </tr>
+          <tr>
+            <td>Amit Kulkarni</td>
+            <td>Backend Developer</td>
+            <td>Node.js, Express, MongoDB</td>
+          </tr>
+          <tr>
+            <td>Rohan Patil</td>
+            <td>Database & Integration</td>
+            <td>MongoDB, APIs, Auth Systems</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <%- include('footer') %>
+</body>
+</html>

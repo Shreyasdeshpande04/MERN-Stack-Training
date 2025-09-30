@@ -1,0 +1,156 @@
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav {
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(9, 9, 121, 1) 35%,
+      rgba(0, 66, 79, 1) 100%
+    );
+    padding: 1rem 2rem;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #fff;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  #toggle {
+    display: none;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+  }
+
+  .hamburger span {
+    height: 3px;
+    width: 25px;
+    background: #fff;
+    border-radius: 3px;
+  }
+
+  .menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .menu li {
+    position: relative;
+  }
+
+  .menu li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    padding: 0.5rem;
+    transition: 0.3s;
+  }
+
+  .menu li a:hover {
+    color: #00c9ff;
+  }
+
+  .menu li ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #2c5364;
+    display: none;
+    list-style: none;
+    padding: 0.5rem 0;
+    border-radius: 6px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+  }
+
+  .menu li:hover ul {
+    display: block;
+  }
+
+  .menu li ul li a {
+    padding: 0.6rem 1rem;
+    display: block;
+  }
+
+  .menu li ul li a:hover {
+    background-color: #1e3c52;
+  }
+
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+
+    .menu {
+      width: 100%;
+      flex-direction: column;
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    .menu li {
+      width: 100%;
+    }
+
+    .menu li ul {
+      position: static;
+      box-shadow: none;
+    }
+
+    #toggle:checked + .hamburger + .menu {
+      max-height: 1000px;
+      margin-top: 2rem;
+    }
+  }
+</style>
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">FORTUNE CLOUDE</div>
+
+    <input type="checkbox" id="toggle" />
+    <label for="toggle" class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <ul class="menu">
+      <li><a href="/">Home</a></li>
+      <% if(!isLoggedIn){%>
+      <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Signup</a></li>
+        
+     
+        <% } else{ %>
+     
+  
+      
+        <li><a href="/addStudent">AddStudent</a></li>
+        <li><a href="/list">List</a></li>
+          <li><a href="/logout">Logout</a></li>
+          <%}%>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Footer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .footer {
+      background-color: #222;
+      color: #f1f1f1;
+      padding: 30px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .footer-col {
+      flex: 1;
+      max-width: 300px;
+      min-width: 250px;
+    }
+
+
+    .footer-col.quick {
+      margin-left: 150px; 
+    }
+    .footer-col.about {
+      margin-left: 50px; 
+    }
+    .footer h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #f9d342;
+    }
+
+    .footer p,
+    .footer a {
+      font-size: 14px;
+      color: #ccc;
+      text-decoration: none;
+      line-height: 1.8;
+    }
+
+    .footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 10px;
+      background-color: #111;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-col {
+        max-width: 100%;
+        margin-left: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="footer">
+    <div class="footer-col about">
+      <h3>About Us</h3>
+      <p>
+        Fortune Cloud Technologies – India’s Most Trusted ONLINE & OFFLINE IT Training & Placement Institute. We offer job-ready courses in software and programming, backed by our unique ‘Train to Hire’ model to prepare students for real-world challenges.
+      </p>
+    </div>
+    <div class="footer-col quick">
+      <h3>Quick Links</h3>
+      <p><a href="/report">Home</a></p>
+      <p><a href="/service">Services</a></p>
+      <p><a href="/contact">Contact</a></p>
+    </div>
+    <div class="footer-col">
+      <h3>Follow Us</h3>
+      <p>WhatsApp | Facebook | Instagram</p>
+      <p>YouTube | LinkedIn | Twitter</p>
+    </div>
+  </div>
+</body>
+</html>

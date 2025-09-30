@@ -1,0 +1,44 @@
+
+
+## 📌 Projection
+
+// Used to show only specific fields of a document
+
+**Syntax:**
+db.<collection>.find(query, { field: 1/0 })
+
+**Example:**
+db.students.find({}, { name: 1, age: 1, \_id: 0 })
+// Shows only name and age fields, hides `_id`.
+
+---
+
+## 📌 Embedded Documents
+
+// A document stored inside another document (nested JSON)
+
+**Syntax:**
+db.<collection>.insertOne({ field1: value, embeddedField: { key1: value1, key2: value2 } })
+
+**Example:**
+db.students.insertOne({ name: "Shreyas", age: 22, address: { city: "Mumbai", pincode: 400001 } })
+// `address` is an embedded document with city and pincode.
+
+---
+
+## 📌 Update Operations
+
+// Used to modify existing documents
+
+**Syntax:**
+db.<collection>.updateOne({ filter }, { \$set: { field: value } })
+
+**Example 1 (update single):**
+db.students.updateOne({ name: "Shreyas" }, { \$set: { age: 23 } })
+// Updates Shreyas’s age to 23.
+
+**Example 2 (update many):**
+db.students.updateMany({ age: 21 }, { \$set: { status: "Active" } })
+// All students with age 21 get status = "Active".
+
+---

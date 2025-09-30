@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MUMBAI TOURISM - INDEX</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="navscript.js"></script>
+  <script src="footer.js"></script>
+  <style>
+    body {
+      background-color: #FFFFE0;
+    }
+    .suggestions {
+      border: 1px solid #ccc;
+      border-top: none;
+      max-height: 150px;
+      overflow-y: auto;
+      position: absolute;
+      background-color: white;
+      z-index: 1000;
+      width: 100%;
+      top: 100%;
+      left: 0;
+    }
+    .suggestion-item {
+      padding: 5px;
+      cursor: pointer;
+    }
+    .suggestion-item:hover, .suggestion-item.active {
+      background-color: #f0ad4e;
+      color: white;
+    }
+    .sort-button {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+    }
+    .position-relative-wrapper {
+      position: relative;
+      width: 100%;
+    }
+  </style>
+</head>
+<body style="background-color:#FFFFE0;">
+  <div id="navbar"></div>
+
+  <!-- Search and Filters Section -->
+  <div class="container my-4">
+    <div class="row text-center text-md-start align-items-start">
+      <!-- Filter by Category -->
+      <div class="col-md-4 mb-3 mb-md-0">
+        <select id="categoryFilter" class="form-select">
+          <option disabled selected>Filter by Category of Destinations</option>
+          <option value="adventure.html">Adventure</option>
+          <option value="pilgrim.html">Pilgrim</option>
+          <option value="wildlife.html">Wildlife</option>
+        </select>
+      </div>
+
+      <!-- Search Bar with Submit Button -->
+      <div class="col-md-4 mb-3 mb-md-0">
+        <div class="position-relative-wrapper d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search Destination" id="searchBox" aria-label="Search" autocomplete="off">
+          <button class="btn btn-info" onclick="submitSearch()">Submit</button>
+          <div id="suggestions" class="suggestions"></div>
+        </div>
+      </div>
+
+      <!-- Filter by Alphabet -->
+      <div class="col-md-4 d-flex justify-content-between align-items-center">
+        <select id="orderFilter" class="form-select me-2">
+          <option disabled selected>Filter by Alphabet</option>
+        </select>
+        <button onclick="toggleSort()" class="sort-button">⇅</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header and Marquee -->
+  <div class="container text-center my-3">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-12 col-md-2 d-flex justify-content-center">
+        <img src="https://images.pond5.com/welcome-mumbai-road-sign-airplane-footage-293777762_iconl.jpeg" height="200px" alt="Map">
+      </div>
+      <div class="col-12 col-md-7 d-flex justify-content-center">
+        <h1 class="fs-3 text-dark text-center w-100">
+          <div id="myDIV" class="d-inline-block p-2" style="background: linear-gradient(to right, rgb(233, 74, 74),rgb(231, 183, 93),yellow,rgb(96, 236, 96),rgb(98, 195, 240),rgb(179, 104, 233),violet); color:black;">WELCOME TO MUMBAI TOURISM</div>
+        </h1>
+      </div>
+      <div class="col-12 col-md-2 d-flex justify-content-center">
+        <img src="https://live.staticflickr.com/1664/25732368074_c94e7a38fd_h.jpg" width="500px" height="190px">
+      </div>
+    </div>
+    <font size="+3" color="#ca1919">
+      <marquee>
+        <img src="https://www.shutterstock.com/image-vector/bragva-orange-flag-vector-icon-260nw-2128182146.jpg" class="logo" />
+        <span>चला जिवाची मुंबई करूया, सागराच्या लाटांवर मनसोक्त डोलूया.&nbsp;&nbsp;तुमचं साहस इथेच वाट पाहे, मुंबई उभी स्वागताला आहे.</span>
+        <img src="https://www.shutterstock.com/image-vector/bragva-orange-flag-vector-icon-260nw-2128182146.jpg" class="logo" />
+      </marquee>
+    </font>
+  </div>
+
+  <!-- Welcome Section -->
+  
+  <font size="5px">
+<section class="container my-5">
+
+
+  <p>
+    <strong>Mumbai</strong>, the financial capital of India, is a city that never sleeps. Known for its iconic skyline, colonial architecture, bustling local trains, and the heart of the Bollywood film industry, Mumbai offers a thrilling mix of tradition and modernity.
+  </p>
+
+  <p>
+    Whether you're a history lover, a foodie, a beachgoer, or a culture explorer, Mumbai has something special for you. Start your journey at the Gateway of India, take a ferry to the <em>Elephanta Caves</em>, stroll down <em>Marine Drive</em> at sunset, or explore the vibrant streets of <em>Colaba and Bandra</em>.
+  </p>
+
+  <h3 class="mt-4 text-center">Top Experiences in Mumbai:</h3>
+<ul class="text-start px-3">
+  <li>Visit <strong>Chhatrapati Shivaji Maharaj Terminus</strong>, a UNESCO World Heritage Site</li>
+  <li>Take a film city tour and get behind the scenes of Bollywood</li>
+  <li>Shop and snack in <strong>Colaba Causeway</strong> and <strong>Crawford Market</strong></li>
+  <li>Relax at <strong>Juhu Beach</strong> and <strong>Girgaum Chowpatty</strong></li>
+  <li>Explore art at <strong>Jehangir Art Gallery</strong> and <strong>Kala Ghoda</strong></li>
+</ul>
+
+<h3 class="mt-4 text-center">How to book spot on our website?</h3>
+<ul class="text-start px-3">
+  <li>Click on Destination tab on the navbar</li>
+  <li>You will see a dropdown of various types of Destinations like ADVENTURE, HISTORIC, PILGRIM, WILDLIFE</li>
+  <li>Click on the type of destination you want to visit</li>
+  <li>You will see 4 spots of each destination type</li>
+  <li>You can click on any spot to view name, info, photo and book button</li>
+  <li>When you click the book button, a form will appear to enter source, passengers, etc.</li>
+  <li>After submitting the form, you’ll see a success message.</li>
+</ul>
+
+
+</section>
+
+
+
+  <!-- Map Image -->
+  <div class="text-center my-4">
+   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241316.2289725881!2d72.71412695097185!3d19.08280670432109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1750062757046!5m2!1sen!2sin" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><center><p>Map of Mumbai</p></center>
+  </div>
+
+  <div id="footer"></div>
+
+  <script>
+    const spots = [
+      "AAREY FOREST", "ELEPHANTA CAVES", "GATEWAY OF INDIA", "ISKCON TEMPLE",
+      "MARINE DRIVE", "MUMBADEVI TEMPLE", "SANJAY GANDHI NATIONAL PARK",
+      "SIDDHIVINAYAK TEMPLE", "TUNGARESHWAR WILDLIFE SANCTUARY"
+    ];
+    const destinations = {
+      "GATEWAY OF INDIA": "adventure.html",
+      "MARINE DRIVE": "adventure.html",
+      "ELEPHANTA CAVES": "adventure.html",
+      "SIDDHIVINAYAK TEMPLE": "pilgrim.html",
+      "MUMBADEVI TEMPLE": "pilgrim.html",
+      "ISKCON TEMPLE": "pilgrim.html",
+      "SANJAY GANDHI NATIONAL PARK": "wildlife.html",
+      "AAREY FOREST": "wildlife.html",
+      "TUNGARESHWAR WILDLIFE SANCTUARY": "wildlife.html"
+    };
+
+    const searchBox = document.getElementById("searchBox");
+    const suggestionsBox = document.getElementById("suggestions");
+    let selectedIndex = -1;
+
+    searchBox.addEventListener("input", function () {
+      const query = this.value.toUpperCase();
+      suggestionsBox.innerHTML = "";
+      selectedIndex = -1;
+      if (query.length === 0) return;
+      const filtered = spots.filter(s => s.startsWith(query));
+      filtered.forEach((s, idx) => {
+        const div = document.createElement("div");
+        div.className = "suggestion-item";
+        div.textContent = s;
+        div.addEventListener("click", () => navigateTo(s));
+        suggestionsBox.appendChild(div);
+      });
+    });
+
+    searchBox.addEventListener("keydown", function (e) {
+      const items = suggestionsBox.querySelectorAll(".suggestion-item");
+      if (e.key === "ArrowDown") {
+        if (selectedIndex < items.length - 1) selectedIndex++;
+      } else if (e.key === "ArrowUp") {
+        if (selectedIndex > 0) selectedIndex--;
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        if (selectedIndex >= 0 && items[selectedIndex]) {
+          navigateTo(items[selectedIndex].textContent);
+        } else {
+          submitSearch();
+        }
+      }
+      items.forEach((item, i) => {
+        item.classList.toggle("active", i === selectedIndex);
+      });
+    });
+
+    function navigateTo(name) {
+      if (destinations[name]) {
+        window.location.href = destinations[name] + "?search=" + encodeURIComponent(name);
+      } else {
+        alert("Destination Not Found");
+      }
+    }
+
+    function submitSearch() {
+      const query = searchBox.value.toUpperCase().trim();
+      if (destinations[query]) {
+        window.location.href = destinations[query] + "?search=" + encodeURIComponent(query);
+      } else {
+        alert("Destination Not Found");
+      }
+    }
+
+    let ascending = true;
+    function populateOrderDropdown() {
+      const dropdown = document.getElementById("orderFilter");
+      dropdown.innerHTML = '<option disabled selected>Filter by List of Destinations</option>';
+      let sortedSpots = [...spots];
+      sortedSpots.sort((a, b) => ascending ? a.localeCompare(b) : b.localeCompare(a));
+      sortedSpots.forEach(s => {
+        const opt = document.createElement("option");
+        opt.value = s;
+        opt.textContent = s;
+        dropdown.appendChild(opt);
+      });
+    }
+
+    function toggleSort() {
+      ascending = !ascending;
+      populateOrderDropdown();
+    }
+
+    populateOrderDropdown();
+
+    document.getElementById("categoryFilter").addEventListener("change", function () {
+      window.location.href = this.value;
+      this.selectedIndex = 0;
+    });
+
+    document.getElementById("orderFilter").addEventListener("change", function () {
+      const selectedSpot = this.value;
+      if (destinations[selectedSpot]) {
+        window.location.href = destinations[selectedSpot] + "?search=" + encodeURIComponent(selectedSpot);
+      } else {
+        alert("Destination Not Found");
+      }
+      this.selectedIndex = 0; // Makes dropdown usable again
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

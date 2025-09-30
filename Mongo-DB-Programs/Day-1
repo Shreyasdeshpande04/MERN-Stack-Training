@@ -1,0 +1,121 @@
+---
+
+## 1️⃣ Show Databases
+
+// Displays all databases available in MongoDB
+
+**Syntax:**
+show dbs
+
+**Example:**
+show dbs
+// Shows all available databases → admin, config, local
+
+---
+
+## 2️⃣ Use Database
+
+// Switches to a specific database (creates if not exists)
+
+**Syntax:**
+use <dbname>
+
+**Example:**
+use studentDB
+// Switches to studentDB (creates it if it does not exist)
+
+---
+
+## 3️⃣ Create Collection
+
+// Creates a new collection inside the current database
+
+**Syntax:**
+db.createCollection("<name>")
+
+**Example:**
+db.createCollection("students")
+// Creates a new collection named "students"
+
+---
+
+## 4️⃣ Drop Database
+
+// Deletes the currently selected database permanently
+
+**Syntax:**
+db.dropDatabase()
+
+**Example:**
+db.dropDatabase()
+// Deletes the current database in use
+
+---
+
+## 5️⃣ Show Collections
+
+// Displays all collections present in the current database
+
+**Syntax:**
+show collections
+
+**Example:**
+show collections
+// Lists all collections in the current DB → students, teachers
+
+---
+
+## 6️⃣ Drop Collection
+
+// Removes a specific collection from the current database
+
+**Syntax:**
+db.<collection>.drop()
+
+**Example:**
+db.students.drop()
+// Deletes the "students" collection
+
+---
+
+## 7️⃣ Insert One Document
+
+// Inserts a single record/document into a collection
+
+**Syntax:**
+db.<collection>.insertOne({ key: value })
+
+**Example:**
+db.students.insertOne({ name: "Rahul", age: 22 })
+// Inserts one student record into "students" collection
+
+---
+
+## 8️⃣ Insert Many Documents
+
+// Inserts multiple records/documents at once into a collection
+
+**Syntax:**
+db.<collection>.insertMany(\[{...}, {...}])
+
+**Example:**
+db.students.insertMany(\[
+{ name: "Shreyas", age: 21 },
+{ name: "Amit", age: 21 }
+])
+// Inserts multiple student records in one go
+
+---
+
+## 9️⃣ Find Documents
+
+// Retrieves one or more documents from a collection
+
+**Syntax:**
+db.<collection>.find()
+
+**Example:**
+db.students.find()
+// Retrieves all documents inside "students"
+
+---

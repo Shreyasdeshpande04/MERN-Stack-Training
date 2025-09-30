@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Update User</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex; /* Use flexbox for centering content */
+            flex-direction: column; /* Stack content vertically */
+            min-height: 100vh; /* Full viewport height */
+        }
+
+        .page-content-wrapper { /* New wrapper to center the main content */
+            flex-grow: 1; /* Allows this wrapper to take available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center vertically */
+            align-items: center; /* Center horizontally */
+            padding: 20px;
+        }
+
+        .welcome-text {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #333; /* Darker text for better contrast */
+        }
+
+        .signup-box { /* Renamed for consistency with "update" context or keep it generic */
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px; /* Max width like your signup form */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .signup-box h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: bold; /* Make labels bold */
+        }
+
+        .form-group input {
+            width: calc(100% - 16px); /* Account for padding */
+            padding: 10px 8px; /* Increased padding for better input feel */
+            font-size: 16px; /* Slightly larger font for inputs */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Focus highlight */
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px; /* Increased padding */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px; /* Larger font for button */
+            cursor: pointer;
+            transition: background-color 0.2s ease; /* Smooth hover effect */
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Basic Footer Styling (assuming you have a footer partial) */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+    </style>
+</head>
+<body>
+    <%- include("header") %
+
+<div class="page-content-wrapper">
+<div class="welcome-text">WELCOME TO UPDATE PAGE</div><div class="signup-box">
+<form action="/update/<%= user._id %>" method="post">
+<div class="form-group"><label for="name">Name</label>
+<input type="text" id="name" name="name" value="<%= user.name %>" placeholder="User name" required="">
+</div><div class="form-group"><label for="email">Email</label>
+<input type="email" id="email" name="email" value="<%= user.email %>" placeholder="Email" required="">
+</div><div class="form-group"><label for="password">Password</label>
+<input type="password" id="password" name="password" value="<%= user.password %>" placeholder="Password" required="">
+</div><button type="submit" class="submit-btn">Update</button></form></div></div>
+
+<%- include("footer") %>
+</body>
+</html>

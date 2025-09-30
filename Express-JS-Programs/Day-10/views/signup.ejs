@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Add Placed Students</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+    }
+
+    .page-container {
+      max-width: 900px;
+      margin: 20px auto 50px; 
+      padding: 20px;
+    }
+
+    .welcome-text {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .signup-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .signup-box h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <%- include('header') %>
+  <div class="page-container">
+    <div class="welcome-text">WELCOME TO PLACED STUDENTS FORM PAGE</div><div class="signup-box">
+ <form method="POST" action="/signupUser"><div class="form-group"><label for="name">Name</label>
+    <input type="text" name="name" id="name" required /></div>
+  <div class="form-group"><label for="email">Email</label>
+    <input type="email" name="email" id="email" required /></div>
+  <div class="form-group"><label for="degree">Degree</label>
+   <input type="text" name="degree" id="degree" required /></div>
+  <div class="form-group"><label for="domain">Domain</label>
+<input type="text" name="domain" id="domain" required /></div>
+  <div class="form-group"><label for="company">Company</label>
+  <input type="text" name="company" id="company" required /></div>
+  <div class="form-group"><label for="role">Role</label>
+<input type="text" name="role" id="role" required /></div>
+  <div class="form-group"><label for="packagee">Package</label>
+    <input type="number" name="packagee" id="package" required /></div>
+  <input type="submit" value="Submit" class="submit-btn" />
+</form>
+
+
+    </div>
+  </div>
+
+  <%- include('footer') %>
+
+</body>
+</html>

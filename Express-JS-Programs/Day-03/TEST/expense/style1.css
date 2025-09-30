@@ -1,0 +1,82 @@
+}
+.wrapper{
+  display: flex;
+   background-color: black;
+   margin-bottom: 100px;
+   margin-left: 40px;
+   margin-right: 400px;
+   font-family: "courier"
+}
+.wrapper .static-txt{
+    background-color:   black;
+  font-size: 60px;
+  font-weight: 400;
+  font-family: "courier"
+}
+.wrapper .dynamic-txts{
+  margin-left: 15px;
+  height: 90px;
+  line-height: 90px;
+  overflow: hidden;
+     background-color:  black;
+     font-family: "courier"
+}
+.dynamic-txts li{
+  list-style: none;
+  color: green;
+  font-size: 60px;
+  font-weight: 500;
+  position: relative;
+  color:    black;
+     background-color:  black;
+  animation: slide 12s steps(0) infinite;
+}
+@keyframes slide {
+  100%{
+    top: 60px;
+
+      background-color:   black;
+  }
+   background-color:  black;
+}
+.dynamic-txts li span{
+      background-color:   black;
+  position: relative;
+  margin: 5px 0;
+  line-height: 90px;
+}
+.dynamic-txts li span::after{
+      background-color:   black;
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 150%;
+  width: 100%;
+ 
+  border-left: 2px solid  black;
+  animation: typing 8s steps(30) infinite;
+}
+@keyframes typing {
+  40%, 60%{
+    left: calc(100% + 30px);
+  }
+  100%{
+    left: 0;
+  }
+}
+
+.change_content:after{
+  content:  '';
+  animation: changetext 10s infinite linear;
+  color:  black;
+  font-family:courier
+}
+
+@keyframes changetext{
+  0%{content:"INCOME";}
+
+  50%{content:"BUDGET";}
+
+  100%{content:"EXPENSE";}
+  
+}

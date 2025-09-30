@@ -1,0 +1,52 @@
+ body {
+      background-color: #FFFFE0;
+      padding-top: 80px;
+    }
+    .navbar-custom {
+      background-color: hwb(200 4% 64%) !important;
+    }
+    .text-green { color: #00ff00 !important; }
+    .text-yellow { color: #ffff00 !important; }
+    .text-orange { color: #ff9500 !important; }
+    .rounded-custom {
+      border-radius: 7%;
+      height: auto;
+      min-height: 250px;
+    }
+    @media (max-width: 576px) {
+      .rounded-custom {
+        border-radius: 4%;
+        padding: 10px;
+      }
+    }
+    footer {
+      font-size: 14px;
+      background-color: black;
+      color: white;
+      padding-top: 20px;
+    }
+    .logo {
+      width: 40px;
+      height: auto;
+      margin-right: 8px;
+    }
+     .logo-text {
+      display: inline-flex;
+      align-items: center;
+    }
+#myDIV {
+
+  background-image: linear-gradient(to right, rgb(233, 74, 74),rgb(231, 183, 93),yellow,rgb(96, 236, 96),rgb(98, 195, 240),rgb(179, 104, 233),violet);
+  font: weight 900;
+}
+
+#myDIVI {
+font: weight 900;
+
+}
+
+.sample {
+  font-weight: 500;
+font-size:larger;
+
+}

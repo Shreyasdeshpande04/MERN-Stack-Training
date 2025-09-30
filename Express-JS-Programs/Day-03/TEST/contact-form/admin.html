@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - Mumbai Tourism</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; }
+    #dashboard { display: none; }
+    .card { box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <!-- Login Section -->
+    <div id="loginSection">
+      <h2 class="text-center mb-4">Admin Login</h2>
+      <div class="card p-4 mx-auto" style="max-width: 400px;">
+        <input type="text" id="username" class="form-control mb-3" placeholder="Username">
+        <input type="password" id="password" class="form-control mb-3" placeholder="Password">
+        <button class="btn btn-primary w-100" onclick="adminLogin()">Login</button>
+        <div id="loginError" class="text-danger mt-2 text-center" style="display:none;">❌ Invalid credentials</div>
+      </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard" class="mt-5">
+      <h2 class="text-center mb-4">Tourism Admin Dashboard</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card p-3 text-center bg-success text-white">
+            <h5>Total Users</h5>
+            <h3 id="totalUsers">0</h3>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 text-center bg-info text-white">
+            <h5>Total Bookings</h5>
+            <h3 id="totalBookings">0</h3>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 text-center bg-warning text-dark">
+            <h5>Total Revenue (₹)</h5>
+            <h3 id="totalRevenue">0</h3>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-3 text-center bg-primary text-white">
+            <h5>Total Source Spots Count</h5>
+            <h3>10</h3>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-3 text-center bg-danger text-white">
+            <h5>Total Destination Spots Count</h5>
+            <h3>9</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function adminLogin() {
+      const uname = document.getElementById("username").value.trim();
+      const pwd = document.getElementById("password").value.trim();
+      const errorBox = document.getElementById("loginError");
+
+      if (uname === "abc" && pwd === "123") {
+        errorBox.style.display = "none";
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+        fetchDashboardData();
+      } else {
+        errorBox.style.display = "block";
+      }
+    }
+
+    async function fetchDashboardData() {
+      try {
+        const res = await fetch("/admin-data");
+        const result = await res.json();
+
+        if (result.success) {
+          const s = result.stats;
+          document.getElementById("totalUsers").textContent = s.totalUsers;
+          document.getElementById("totalBookings").textContent = s.totalBookings;
+          document.getElementById("totalRevenue").textContent = s.totalRevenue;
+    
+       
+        } else {
+          alert("❌ Failed to load dashboard data.");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("❌ Failed to load dashboard data.");
+      }
+    }
+  </script>
+</body>
+</html>

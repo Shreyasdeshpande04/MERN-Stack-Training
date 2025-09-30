@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Table</title>
+  <style>
+    .styled-table {
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.9em;
+      font-family: sans-serif;
+      min-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+    .styled-table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+    }
+    .styled-table th, .styled-table td {
+      padding: 12px 15px;
+    }
+  </style>
+</head>
+<body>
+      <%- include('header') %><br><br><br>
+     <center><h1>WELCOME TO PLACEMENT RECORD PAGE</h1></center> <center><table class="styled-table">
+    <thead><tr><th>Sr No</th><th>Name</th><th>Email</th><th>Degree</th><th>Domain</th><th>Company</th>
+    <th>Role</th><th>Package (LPA)</th><th>Actions</th></tr></thead><tbody>
+      <% for (var i = 0; i < users.length; i++) { %><tr><td><%= i + 1 %></td>
+          <td><%= users[i].name %></td><td><%= users[i].email %></td>
+          <td><%= users[i].degree%></td>
+          <td><%= users[i].domain %></td>
+          <td><%= users[i].company %></td>
+          <td><%= users[i].role %></td>
+          <td><%= users[i].packagee %></td><td>
+  <a href="/edit/<%= users[i]._id %>" onclick="return confirm('Are you sure you want to edit this user?');">
+    <button type="button">Edit</button></a>
+  <form action="/delete/<%= users[i]._id %>" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this user?');">
+    <button type="submit">Delete</button> </form></td></td></tr><% } %></tbody></table></center><br><br><br><br><br><br>
+      <%- include('footer') %>
+</body>
+</html>

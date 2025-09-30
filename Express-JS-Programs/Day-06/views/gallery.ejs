@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - Student Portal</title> <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      text-align: center; 
+      margin-bottom: 30px;
+    }
+
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+      gap: 20px;
+      padding: 20px 0;
+    }
+
+    .gallery-item {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px; 
+      object-fit: cover; 
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 15px;
+      font-size: 0.9em;
+      color: #555;
+      text-align: center;
+    }
+
+    p, ul, .quote, .team-table, address, figure {
+ 
+    }
+
+  </style>
+</head>
+<body>
+  <%- include('header') %>
+  <div class="container">
+    <header>
+      <h1>Our Student Portal Gallery 📸</h1> <p style="text-align: center; color: #666;">Explore memorable moments and vibrant campus life at AGPIT!</p>
+    </header>
+    <section class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://www.agpit.edu.in/05.jpg" alt="Campus View 1">     </div>
+            <div class="gallery-item">
+        <img src="https://www.agpit.edu.in/Images/Slider/new/7.jpg" alt="Annual Fest">     </div>
+      <div class="gallery-item">
+        <img src="https://scontent.fpnq7-3.fna.fbcdn.net/v/t39.30808-6/478926895_654370383714086_3241208339224988688_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=-RQrtPjFtVsQ7kNvwFT9EVS&_nc_oc=AdmgirL3A-xmKadGgm4Wp9PEJDS9M4VkTKmjbYfbUCkLsjQnPzBZZyVWM6T2XL4nubloj6dXYRIpqMj4XN3FICgd&_nc_zt=23&_nc_ht=scontent.fpnq7-3.fna&_nc_gid=qEEW9sLe73ABvO2g6W8f5g&oh=00_AfO4eU4cnTPk2iJ5yf9z9OpzrZmG-PUSv9oTGXV2PFr1hA&oe=686B09F9" alt="Lab Session">     </div>
+      <div class="gallery-item">
+        <img src="https://www.agpit.edu.in/Images/Slider/new/5.jpg" alt="Library Scene">      </div>
+      </section>
+  </div>
+  <%- include('footer') %>
+</body>
+</html>

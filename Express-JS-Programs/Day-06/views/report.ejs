@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Report</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <%- include('header') %>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Student Report</h2>
+  
+  <div class="row">
+    <% Student.forEach(stu => { %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title text-primary"><%= stu.name %></h5>
+            <p class="card-text"><strong>Age:</strong> <%= stu.age %></p>
+            <p class="card-text"><strong>College:</strong> <%= stu.college %></p>
+            <p class="card-text"><strong>CGPA:</strong> <%= stu.cgpa %></p>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+<br>
+<br>
+  <%- include('footer') %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

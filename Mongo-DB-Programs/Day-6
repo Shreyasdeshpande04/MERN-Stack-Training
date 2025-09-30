@@ -1,0 +1,50 @@
+### 📌 1. **Indexes**
+
+// Tool to speed up data retrieval in MongoDB by avoiding full collection scans
+
+**Syntax:**
+db.collection.createIndex({ fieldName: 1 })    // Create ascending index
+db.collection.getIndexes()                     // View all indexes
+db.collection.dropIndex("indexName")           // Drop unwanted index
+
+**Example:**
+db.products.createIndex({ category: 1, price: -1 })
+// Allows fast filtering products by category and sorting by price
+
+---
+
+### 📌 2. **Explain Method**
+
+// Shows how MongoDB executes a query and whether it uses indexes
+
+**Syntax:**
+db.collection.find(query).explain("executionStats")
+
+**Example:**
+db.users.find({ age: { \$gt: 25 } }).explain("executionStats")
+// Reveals whether query uses COLLSCAN (slow) or IXSCAN (fast with index)
+
+---
+
+### 📌 3. **Aggregation Framework**
+
+// Framework for filtering, grouping, sorting, and reshaping data
+
+**Syntax:**
+db.collection.aggregate(\[
+{ \$match: { ... } },
+{ \$group: { \_id: ..., total: { \$sum: ... } } },
+{ \$sort: { field: 1 } },
+{ \$project: { field1: 1, field2: 1, \_id: 0 } }
+])
+
+**Example:**
+db.orders.aggregate(\[
+{ \$match: { status: "completed" } },
+{ \$group: { \_id: "\$customerId", totalSpent: { \$sum: "\$amount" } } },
+{ \$sort: { totalSpent: -1 } },
+{ \$project: { customerId: "$\_id", totalSpent: 1, \_id: 0 } }
+])
+// Finds top customers by total spending
+
+---

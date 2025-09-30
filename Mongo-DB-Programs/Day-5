@@ -1,0 +1,61 @@
+---
+
+### 🛠️ **1. Renaming Fields (`$rename`)**
+
+// Used to rename a field in documents
+
+**Syntax:**
+db.collection.updateOne({ filter }, { \$rename: { "oldName": "newName" } })
+
+**Example:**
+db.users.updateOne({ name: "Shreyas" }, { \$rename: { "userName": "username" } })
+// Renames the field `userName` to `username` for Shreyas
+
+---
+
+### 🧹 **2. Removing Fields (`$unset`)**
+
+// Used to delete a field from documents
+
+**Syntax:**
+db.collection.updateOne({ filter }, { \$unset: { "fieldName": "" } })
+
+**Example:**
+db.users.updateOne({ name: "Shreyas" }, { \$unset: { "temporaryToken": "" } })
+// Removes the field `temporaryToken` from Shreyas' document
+
+---
+
+### 🔄 **3. Updating Arrays (`$push`, `$pop`)**
+
+// Used to add or remove elements from an array field
+
+**Syntax:**
+db.collection.updateOne({ filter }, { \$push: { "arrayField": value } })
+db.collection.updateOne({ filter }, { \$pop: { "arrayField": 1 or -1 } })
+
+**Example:**
+db.users.updateOne({ name: "Shreyas" }, { \$push: { wishlist: "Laptop" } })
+// Adds `"Laptop"` to Shreyas' wishlist
+
+db.users.updateOne({ name: "Shreyas" }, { \$pop: { wishlist: 1 } })
+// Removes the last element from Shreyas' wishlist
+
+---
+
+### 🗑️ **4. Delete Operations (`deleteOne`, `deleteMany`)**
+
+// Used to remove entire documents from a collection
+
+**Syntax:**
+db.collection.deleteOne({ filter })
+db.collection.deleteMany({ filter })
+
+**Example:**
+db.users.deleteOne({ name: "Shreyas" })
+// Deletes one document where name = Shreyas
+
+db.users.deleteMany({ status: "inactive" })
+// Deletes all documents where status = inactive
+
+---
