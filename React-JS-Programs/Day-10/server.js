@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Connect to MongoDB (replace with your connection string)
 mongoose.connect(
-  'mongodb+srv://deshpandeshreyas434:lMw5xlMuQCbxKIZW@cluster0.w4l2zll.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+  'mongodb+srv:///<dbname>:<pwd>@cluster0.w4l2zll.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 )
 .then(() => console.log('Connected to MongoDB Atlas'))
 .catch((err) => console.error('MongoDB connection error:', err));
