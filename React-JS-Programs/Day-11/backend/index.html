@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Management</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #444;
+    }
+    form {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    form input {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.5rem 0 1rem 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    form button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #007BFF;
+      border: none;
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background-color: #0056b3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #007BFF;
+      color: white;
+      font-weight: 600;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    caption {
+      caption-side: top;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>User Management</h1>
+
+  <form id="userForm">
+    <h2>Add New User</h2>
+    <input type="text" id="name" placeholder="Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="role" placeholder="Role (optional)" />
+    <input type="number" id="age" placeholder="Age (optional)" min="0" />
+    <button type="submit">Add User</button>
+  </form>
+
+  <table>
+    <caption>Users List</caption>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody id="userList">
+      <!-- Users will be injected here -->
+    </tbody>
+  </table>
+
+  <script>
+    const userList = document.getElementById("userList");
+    const userForm = document.getElementById("userForm");
+
+    const API_URL = "http://localhost:5000/api/users";
+
+    // Fetch and display users
+    async function loadUsers() {
+      const res = await fetch(API_URL);
+      const users = await res.json();
+
+      userList.innerHTML = "";
+
+      users.forEach(user => {
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+          <td>${user.name}</td>
+          <td>${user.email}</td>
+          <td>${user.role || "user"}</td>
+          <td>${user.age != null ? user.age : "N/A"}</td>
+        `;
+
+        userList.appendChild(tr);
+      });
+    }
+
+    // Add new user
+    userForm.addEventListener("submit", async e => {
+      e.preventDefault();
+
+      const newUser = {
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        role: document.getElementById("role").value.trim() || "user",
+        age: parseInt(document.getElementById("age").value) || null
+      };
+
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser)
+      });
+
+      if (res.ok) {
+        userForm.reset();
+        loadUsers(); // refresh list after adding
+      } else {
+        alert("Failed to add user");
+      }
+    });
+
+    // Initial load
+    loadUsers();
+  </script>
+
+</body>
+</html>
