@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 });
 
 // Connect to MongoDB Atlas
-mongoose.connect("mongodb+srv://deshpandeshreyas434:lMw5xlMuQCbxKIZW@cluster0.w4l2zll.mongodb.net/Driver?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv:///<dbname>:<pwd>@cluster0.w4l2zll.mongodb.net/Driver?retryWrites=true&w=majority")
   .then(() => console.log("MongoDB Atlas connected"))
   .catch((err) => console.error(err));
 
