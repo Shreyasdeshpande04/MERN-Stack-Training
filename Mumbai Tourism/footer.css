@@ -1,0 +1,94 @@
+/* Make full height layout and stick footer to bottom */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #000;
+  color: white;
+  padding: 20px 0;
+  font-size: 15px;
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  padding: 10px;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.mail-link i {
+  margin-right: 8px;
+  color: #d44638;
+}
+
+.phone-link i {
+  color: #28a745;
+}
+
+.mail-link,
+.phone-link {
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .footer-flex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section {
+    max-width: 100%;
+    padding: 10px 0;
+  }
+
+  .mail-link,
+  .phone-link {
+    justify-content: center;
+  }
+}
+
+/* Desktop Alignment */
+@media (min-width: 769px) {
+  .footer-section:first-child {
+    text-align: left;
+  }
+
+  .footer-section:nth-child(2) {
+    text-align: center;
+  }
+
+  .footer-section:last-child {
+    text-align: right;
+  }
+
+  .footer-section:last-child .mail-link,
+  .footer-section:last-child .phone-link {
+    justify-content: flex-end;
+  }
+}
