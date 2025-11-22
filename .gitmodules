@@ -1,0 +1,3 @@
+[submodule "course-management-system"]
+	path = course-management-system
+	url = https://github.com/Shreyasdeshpande04/course-management-system.git
