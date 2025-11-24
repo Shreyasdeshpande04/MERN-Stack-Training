@@ -4,6 +4,8 @@
 This is a complete Course Management System built using the MERN Stack (Node.js, Express, MongoDB, EJS).
 The source code is kept private for security reasons, but the application is live!
 
+If u want source code message me on LinkedIn-👉 [**OPEN LINKEDIN**](www.linkedin.com/in/shreyassdeshpande)
+
 ### 🚀 Live Demo
 **Click the link below to test the project:**
 👉 [**OPEN LIVE WEBSITE**](https://course-management-system-7x1z.onrender.com/homepage)
