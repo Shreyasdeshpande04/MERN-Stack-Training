@@ -2,18 +2,24 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { MongoClient } = require("mongodb");
 const app = express();
-const PORT = 3000;
 
-const MONGO_URL = "mongodb+srv://<db_username>:<db_password>@cluster0.w4l2zll.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+// CHANGE 1: Let Render decide the Port
+const PORT = process.env.PORT || 3000;
+
+// CHANGE 2: Read the password from Render Settings
+const MONGO_URL = process.env.MONGO_URI; 
+
 const DB_NAME = "travelBookings";
 
 app.use(bodyParser.json());
 app.use(express.static(".")); // To serve admin.html and other files
 
+// Connect to Database
 MongoClient.connect(MONGO_URL, { useUnifiedTopology: true })
   .then(client => {
     const db = client.db(DB_NAME);
     const bookings = db.collection("bookings");
+    console.log("✅ MongoDB Connected Successfully");
 
     // ✅ Store new booking
     app.post("/booking", async (req, res) => {
@@ -52,7 +58,10 @@ MongoClient.connect(MONGO_URL, { useUnifiedTopology: true })
     });
 
     app.listen(PORT, () =>
-      console.log(`✅ Server running on http://localhost:${PORT}`)
+      console.log(`✅ Server running on Port ${PORT}`)
     );
   })
-  .catch(err => console.error("❌ MongoDB connection failed:", err));
+  .catch(err => {
+      console.error("❌ MongoDB connection failed:", err);
+      process.exit(1); // Exit if DB fails
+  });
